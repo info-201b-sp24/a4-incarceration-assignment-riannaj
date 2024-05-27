@@ -1,0 +1,175 @@
+---
+title: "A5: Incarceration"
+---
+
+### Introduction
+
+The U.S. prison system starkly illustrates systemic racism, with over-policing and the war on drugs disproportionately impacting people of color. This study analyzes various datasets to uncover trends and disparities in incarceration. The datasets include prison populations per county/state, incarceration rates per 100,000 people, and historical data starting from 1990 in Washington State. By comparing these variables, we can identify regions with high incarceration rates and track changes over time. A specific focus on Washington State allows for detailed analysis of state-level policies. This comprehensive approach aims to highlight racial inequities and inform criminal justice reform discussions.
+
+
+
+
+
+
+
+
+
+### Summary Information
+
+
+
+Analyzing the dataset on prison population per year in the United States reveals significant fluctuations over the past three years. In 2019, the total prison population stood at 1,435,093 individuals, decreasing to 1,213,073 in 2020, and further declining to 1,199,642 in 2021. Washington state similarly experienced a decline in prison population, with 19,160 individuals incarcerated in 2019, decreasing to 15,644 in 2020, and further dropping to 13,457 in 2021. However, despite these overall declines, racial disparities persist, notably in the incarceration levels of Black and White individuals. In 2021, for instance, the incarceration rate for Black individuals in the United States was 5.6 times higher than that of White individuals, with approximately 1,038,100 Black individuals incarcerated compared to 185,900 White individuals. These findings underscore the ongoing need to address systemic inequalities within the criminal justice system and implement reform measures aimed at reducing mass incarceration and promoting equitable outcomes.
+
+
+
+
+
+
+
+
+
+### The Dataset
+
+**Who collected the data?** 
+This data was collected by the Vera Institute.
+
+
+**How was the data collected or generated?** 
+The data was collected from two Bureau of Justice Statistics (BJS) collections: the Census of Jails (COJ), conducted every five to eight years since 1970, and the Annual Survey of Jails (ASJ), conducted since 1982, covering about one-third of jails.
+
+
+
+
+**Why was the data collected?** The data was collected to provide insights into the growth and disparities within American jails, facilitating a better understanding of incarceration trends across the United States. 
+
+
+
+**How many observations (rows) are in your data?** 
+
+Dataset about prison population per county/state: 153811
+
+Dataset about prison/jail population per 100,000 people (rate) per county/state: 153811
+
+Smaller dataset about prison/jail population per 100,000 people (rate) per county/state starting at 1990 in Washington: 1131
+
+
+**How many features (columns) are in the data?**
+
+Dataset about prison population per county/state: 36
+
+Dataset about prison/jail population per 100,000 people (rate) per county/state: 23
+
+Smaller dataset about prison/jail population per 100,000 people (rate) per county/state starting at 1990 in Washington: 23
+
+
+
+
+**What, if any, ethical questions or questions of power do you need to consider when working with this data?**
+
+When working with datasets on prison and jail populations, ethical considerations arise regarding privacy, biases, and power dynamics. Maintaining individuals' privacy and confidentiality is crucial, as is addressing inherent biases that may skew the data. Additionally, researchers must be mindful of the potential impact their findings may have on communities affected by mass incarceration and strive to present the data responsibly.
+
+
+
+
+
+**What are possible limitations or problems with this data?   (at least 200 words)**
+
+When working with data on prison and jail populations, several limitations and potential problems must be considered. Firstly, the accuracy of the data heavily depends on the reporting practices of correctional facilities and agencies, which may lead to underreporting or incomplete reporting due to administrative errors or resource constraints. Moreover, differences in data collection methodologies across jurisdictions can introduce inconsistencies, making comparisons challenging and potentially compromising the reliability and validity of the dataset. Additionally, demographic information such as race, ethnicity, and gender may be inaccurately recorded or missing, obscuring disparities in incarceration rates among different demographic groups and limiting intersectional analyses. Furthermore, there may be a temporal lag in data availability, especially for historical datasets or periodic surveys, hindering timely analyses and the identification of emerging trends or policy impacts. Geographic disparities within regions, contextual factors influencing incarceration rates, and the limitations of rate calculations further complicate the interpretation of the data. Lastly, the dataset may not adequately capture the impact of policy changes, interventions, or criminal justice reforms enacted during the data collection period, necessitating careful consideration and contextual understanding when interpreting findings.
+
+
+
+
+
+
+### Trends Over Time Chart
+
+```{r chart1, echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+
+# Load the data
+data <- read.csv("https://github.com/melaniewalsh/Neat-Datasets/blob/main/us-prison-pop.csv?raw=true")
+
+# Create the plot
+ggplot(data, aes(x = year, y = total_prison_pop, color = urbanicity)) +
+  geom_abline() +
+  geom_smooth() +
+  labs(title = "Trends in Total Prison Population Over Time by Urbanicity",
+       x = "Year",
+       y = "Total Prison Population",
+       color = "Urbanicity") +
+  theme_minimal()
+```
+
+
+The chart "Trends in Total Prison Population Over Time by Urbanicity" displays the changes in the total prison population from various years, segmented by the urbanicity of the regions (e.g., urban, suburban, rural). Each line represents the trend for a different urbanicity category, with smoother lines added to highlight overall trends.The chart shows significant differences in prison population trends across different urbanicity categories. Urban areas generally have higher and more stable prison populations compared to rural areas, which exhibit more variability and fluctuations.This information is important because it highlights the disparities in incarceration rates based on urbanicity, suggesting that different social, economic, and policy factors might be influencing incarceration trends in urban vs. rural areas.
+
+
+### Variable Comparison Chart
+
+
+```{r chart2, echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+data <- read.csv("https://github.com/melaniewalsh/Neat-Datasets/raw/main/us-prison-jail-rates-1990-WA.csv")
+
+str(data)
+
+ggplot(data, aes(x = total_jail_pop_rate, y = total_prison_pop_rate)) +
+  geom_point(alpha = 0.6) +
+  scale_x_continuous(breaks = seq(0, max(data$total_jail_pop_rate, na.rm = TRUE), by = 100)) +
+  scale_y_continuous(breaks = seq(0, max(data$total_prison_pop_rate, na.rm = TRUE), by = 100)) +
+  labs(title = "Prison Population Rate vs Jail Population Rate in WA (1990 onwards)",
+       x = "Total Jail Population Rate (per 100,000)",
+       y = "Total Prison Population Rate (per 100,000)") +
+  theme_minimal()
+```
+
+The scatter plot illustrates the relationship between the total prison population rate and the total jail population rate in Washington state from 1990 onwards. This visualization helps in understanding how changes in one rate might be associated with changes in the other, providing insights into broader trends in incarceration rates within the state.
+
+### Map
+
+
+
+
+
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+# Load necessary libraries
+library(usmap)
+library(ggplot2)
+library(dplyr)
+
+# Read the data
+data <- read.csv("https://github.com/melaniewalsh/Neat-Datasets/raw/main/us-prison-pop.csv")
+
+# Ensure the state names are lowercase to match usmap's requirements
+data$state <- tolower(data$state)
+
+# Aggregate the data by state if it's not already aggregated
+state_data <- data %>%
+  group_by(state) %>%
+  summarize(total_pop = sum(total_pop, na.rm = TRUE))
+
+# Check the range of the total_pop to set appropriate limits
+range(state_data$total_pop)
+
+# Plot the map
+map <- plot_usmap(data = state_data, values = "total_pop", labels = FALSE) +
+  scale_fill_continuous(low = "lightblue", high = "darkblue", name = "Total Population") +
+  theme(legend.position = "right") + # Manually adjust legend position to the right
+  labs(title = "Total Jail Population in the USA") +
+  theme(panel.background = element_rect(colour = "black"))
+
+print(map)  # Display the map
+```
+
+This code generates a choropleth map of the USA, coloring each state based on its total jail population, using a gradient from light blue (low population) to  dark blue (high population). The map includes a title, "Total Jail Population in the USA," and a legend positioned on the right side for clarity. This visualization is important as it highlights geographic disparities in incarceration rates, making it easy to identify states with higher jail populations. Such insights are crucial for informing policy decisions, targeting interventions, and raising public awareness about incarceration issues in the US. By visually representing the data, the map provides a powerful tool for researchers, policymakers, and advocates working towards criminal justice reform.
+
+
+
+
+
+
