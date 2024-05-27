@@ -1,0 +1,23 @@
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+library(usmap)
+library(ggplot2)
+library(dplyr)
+
+data <- read.csv("https://github.com/melaniewalsh/Neat-Datasets/raw/main/us-prison-pop.csv")
+data$state <- tolower(data$state)
+
+state_data <- data %>%
+  group_by(state) %>%
+  summarize(total_pop = sum(total_pop, na.rm = TRUE))
+
+range(state_data$total_pop)
+
+map <- plot_usmap(data = state_data, values = "total_pop", labels = FALSE) +
+  scale_fill_continuous(low = "lightblue", high = "darkblue", name = "Total Population") +
+  theme(legend.position = "right") + # Manually adjust legend position to the right
+  labs(title = "Total Jail Population in the USA") +
+  theme(panel.background = element_rect(colour = "black"))
+
+print(map)  # Display the map
+```
