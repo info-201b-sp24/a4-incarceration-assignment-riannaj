@@ -1,0 +1,17 @@
+```{r chart1, echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+
+# Load the data
+data <- read.csv("https://github.com/melaniewalsh/Neat-Datasets/blob/main/us-prison-pop.csv?raw=true")
+
+# Create the plot
+ggplot(data, aes(x = year, y = total_prison_pop, color = urbanicity)) +
+  geom_abline() +
+  geom_smooth() +
+  labs(title = "Trends in Total Prison Population Over Time by Urbanicity",
+       x = "Year",
+       y = "Total Prison Population",
+       color = "Urbanicity") +
+  theme_minimal()
+```
