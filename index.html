@@ -175,24 +175,33 @@ pre code {
 </div>
 <div id="summary-information" class="section level3">
 <h3>Summary Information</h3>
-<p>Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script</p>
-<p>These will likely be calculated using your DPLYR skills, answering questions such as: </p>
-<ul>
-<li>What is the average value of my variable across all the counties (in the current year)?</li>
-<li>Where is my variable the highest / lowest?</li>
-<li>How much has my variable change over the last N years?</li>
-</ul>
-<p>Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.</p>
+<p>Analyzing the dataset on prison population per year in the United States reveals significant fluctuations over the past three years. In 2019, the total prison population stood at 1,435,093 individuals, decreasing to 1,213,073 in 2020, and further declining to 1,199,642 in 2021. Washington state similarly experienced a decline in prison population, with 19,160 individuals incarcerated in 2019, decreasing to 15,644 in 2020, and further dropping to 13,457 in 2021. However, despite these overall declines, racial disparities persist, notably in the incarceration levels of Black and White individuals. In 2021, for instance, the incarceration rate for Black individuals in the United States was 5.6 times higher than that of White individuals, with approximately 1,038,100 Black individuals incarcerated compared to 185,900 White individuals. These findings underscore the ongoing need to address systemic inequalities within the criminal justice system and implement reform measures aimed at reducing mass incarceration and promoting equitable outcomes.
+</p>
 </div>
 <div id="the-dataset" class="section level3">
 <h3>The Dataset</h3>
-<p>Who collected the data?<br />
-How was the data collected or generated?<br />
-Why was the data collected?<br />
-How many observations (rows) are in your data?<br />
-How many features (columns) are in the data?<br />
-What, if any, ethical questions or questions of power do you need to consider when working with this data?<br />
-What are possible limitations or problems with this data? (at least 200 words)</p>
+<p>Who collected the data? This data was collected by the Vera Institute.
+<br />
+How was the data collected or generated? The data was collected from two Bureau of Justice Statistics (BJS) collections: the Census of Jails (COJ), conducted every five to eight years since 1970, and the Annual Survey of Jails (ASJ), conducted since 1982, covering about one-third of jails.
+<br />
+Why was the data collected? The data was collected to provide insights into the growth and disparities within American jails, facilitating a better understanding of incarceration trends across the United States. 
+<br />
+How many observations (rows) are in your data? Dataset about prison population per county/state: 153811
+
+Dataset about prison/jail population per 100,000 people (rate) per county/state: 153811
+
+Smaller dataset about prison/jail population per 100,000 people (rate) per county/state starting at 1990 in Washington: 1131<br />
+       
+How many features (columns) are in the data? Dataset about prison population per county/state: 36
+
+Dataset about prison/jail population per 100,000 people (rate) per county/state: 23
+
+Smaller dataset about prison/jail population per 100,000 people (rate) per county/state starting at 1990 in Washington: 23
+<br />
+What, if any, ethical questions or questions of power do you need to consider when working with this data? When working with datasets on prison and jail populations, ethical considerations arise regarding privacy, biases, and power dynamics. Maintaining individuals' privacy and confidentiality is crucial, as is addressing inherent biases that may skew the data. Additionally, researchers must be mindful of the potential impact their findings may have on communities affected by mass incarceration and strive to present the data responsibly.
+<br />
+What are possible limitations or problems with this data? (at least 200 words) When working with data on prison and jail populations, several limitations and potential problems must be considered. Firstly, the accuracy of the data heavily depends on the reporting practices of correctional facilities and agencies, which may lead to underreporting or incomplete reporting due to administrative errors or resource constraints. Moreover, differences in data collection methodologies across jurisdictions can introduce inconsistencies, making comparisons challenging and potentially compromising the reliability and validity of the dataset. Additionally, demographic information such as race, ethnicity, and gender may be inaccurately recorded or missing, obscuring disparities in incarceration rates among different demographic groups and limiting intersectional analyses. Furthermore, there may be a temporal lag in data availability, especially for historical datasets or periodic surveys, hindering timely analyses and the identification of emerging trends or policy impacts. Geographic disparities within regions, contextual factors influencing incarceration rates, and the limitations of rate calculations further complicate the interpretation of the data. Lastly, the dataset may not adequately capture the impact of policy changes, interventions, or criminal justice reforms enacted during the data collection period, necessitating careful consideration and contextual understanding when interpreting findings.
+</p>
 </div>
 <div id="trends-over-time-chart" class="section level3">
 <h3>Trends Over Time Chart</h3>
